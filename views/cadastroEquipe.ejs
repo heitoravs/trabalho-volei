@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Equipe - Campeonato Amador de Vôlei</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Equipes</h2>
+
+        <% if (message) { %>
+            <p class="<%= message.includes('sucesso') ? 'success-message' : 'error-message' %>"><%= message %></p>
+        <% } %>
+
+        <form action="/cadastro-equipe" method="POST" class="form-cadastro">
+            <div class="form-group">
+                <label for="nomeEquipeInput">Nome da Equipe:</label>
+                <input type="text" id="nomeEquipeInput" name="nomeEquipe" required>
+            </div>
+            <div class="form-group">
+                <label for="nomeTecnicoInput">Nome do Técnico Responsável:</label>
+                <input type="text" id="nomeTecnicoInput" name="nomeTecnico" required>
+            </div>
+            <div class="form-group">
+                <label for="telefoneTecnicoInput">Telefone do Técnico:</label>
+                <input type="text" id="telefoneTecnicoInput" name="telefoneTecnico" placeholder="Ex: 99123456789 (apenas números)" required pattern="\d{10,11}" title="Apenas números, 10 ou 11 dígitos.">
+            </div>
+            <button type="submit">Cadastrar Equipe</button>
+        </form>
+
+        <hr>
+
+        <h3>Equipes Cadastradas:</h3>
+        <% if (equipes && equipes.length > 0) { %>
+            <ul class="list-cadastros">
+                <% equipes.forEach(equipe => { %>
+                    <li>
+                        <strong><%= equipe.nomeEquipe %></strong> -
+                        Técnico: <%= equipe.nomeTecnico %> (<%= equipe.telefoneTecnico %>)
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>Nenhuma equipe cadastrada ainda.</p>
+        <% } %>
+
+        <div class="navigation-links">
+            <a href="/cadastro-equipe" class="button back-button">Voltar ao Cadastro</a>
+            <a href="/menu" class="button back-button">Voltar ao Menu Principal</a>
+        </div>
+    </div>
+</body>
+</html>

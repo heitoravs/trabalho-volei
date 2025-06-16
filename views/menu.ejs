@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal - Campeonato Amador de Vôlei</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Bem-vindo, <%= username %>!</h2>
+        <p>Último acesso: <%= lastAccess %></p>
+        <ul class="menu-options">
+            <li><a href="/cadastro-equipe">Cadastro de equipes (times)</a></li>
+            <li><a href="/cadastro-jogador">Cadastro de jogadores</a></li>
+        </ul>
+        <a href="/logout" class="button logout-button">Sair</a>
+    </div>
+</body>
+</html>
